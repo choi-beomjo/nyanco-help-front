@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # frontend
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# backend-project
+>>>>>>> 96a8bc8 (Initial commit)
