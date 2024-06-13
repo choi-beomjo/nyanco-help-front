@@ -223,5 +223,11 @@ pyrightconfig.json
 .history
 .ionide
 
+<<<<<<< HEAD
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
 >>>>>>> eaa8d02 (feature: main 추가)
+=======
+*.db
+
+# End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
+>>>>>>> 557249d (feature: sqllite 연결 (#3))
