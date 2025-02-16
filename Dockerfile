@@ -1,12 +1,14 @@
-# Python 3.10 이미지 사용
-FROM python:3.10
-
-# 작업 디렉토리 설정
+# 1단계: Vue 앱 빌드
+FROM node:18 AS build-stage
 WORKDIR /app
-
-# 의존성 파일 복사 및 설치
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# FastAPI 앱 코드 복사
+COPY config/package*.json ./
+RUN npm install
 COPY . .
+RUN npm run build
+
+# 2단계: Nginx로 Vue 앱 제공
+FROM nginx:stable-alpine
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+COPY config/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
