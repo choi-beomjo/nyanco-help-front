@@ -17,7 +17,7 @@ export default {
     };
   },
   async mounted() {
-    const response = await fetch("http://localhost:8000/api/board/post-all");
+    const response = await fetch("http://localhost:8080/api/board/post-all");
     this.posts = await response.json();
   },
 };
