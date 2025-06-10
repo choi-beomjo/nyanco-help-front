@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "./axios";
 
 export async function login(username, password) {
   try {
@@ -6,7 +6,7 @@ export async function login(username, password) {
     params.append("username", username);
     params.append("password", password);
 
-    const response = await axios.post("http://localhost:8080/api/user/login", params, {
+    const response = await api.post("/api/user/login", params, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
