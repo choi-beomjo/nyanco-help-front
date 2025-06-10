@@ -12,13 +12,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Decode Service Account Key
-      run: echo "${{ secrets.GCP_SA_KEY_B64 }}" | base64 -d > gcp-key.json
-
-    - name: Authenticate with GCP
+    - name: Authenticate to GCP
       uses: google-github-actions/auth@v1
       with:
-        credentials_json: ${{ github.workspace }}/gcp-key.json
+        credentials_json: '${{ secrets.GCP_SA_KEY_B64 }}'
 
     - name: Configure Docker
       run: gcloud auth configure-docker asia-northeast3-docker.pkg.dev
