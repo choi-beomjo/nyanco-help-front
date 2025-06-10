@@ -3,7 +3,7 @@
 import axios from "axios";
 
 // API 기본 URL 설정
-const API_URL = "http://localhost:8000"; 
+const API_URL = "http://localhost:8080"; 
 
 const api = axios.create({
   baseURL: API_URL,
