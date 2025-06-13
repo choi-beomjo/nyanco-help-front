@@ -35,7 +35,6 @@
   
   /* ✅ 버튼 스타일 */
   button.home-button {
-    background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     border: none;
     padding: 12px;
@@ -49,27 +48,8 @@
   }
   
   button.home-button:hover {
-    background: linear-gradient(135deg, #0056b3, #003580);
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* ✅ 로그아웃 버튼 (강조) */
-  button.home-button-danger {
-    background: linear-gradient(135deg, #dc3545, #a71d2a);
-  }
-  
-  button.home-button-danger:hover {
-    background: linear-gradient(135deg, #a71d2a, #721c24);
-  }
-  
-  /* ✅ 네비게이션 버튼 */
-  button.home-button-nav {
-    background: linear-gradient(135deg, #28a745, #1d772f);
-  }
-  
-  button.home-button-nav:hover {
-    background: linear-gradient(135deg, #1d772f, #145c23);
   }
   
   /* ✅ 애니메이션 효과 */
@@ -86,5 +66,114 @@
   
   .home-container {
     animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* 홈 카드 스타일 */
+  .home-card {
+    background: #f8fafc;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    padding: 40px 30px 32px 30px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  
+  .home-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #22223b;
+    margin-bottom: 8px;
+  }
+  
+  .home-subtitle {
+    font-size: 1.1rem;
+    color: #4a4e69;
+    margin-bottom: 28px;
+  }
+  
+  .user-info-card {
+    background: #fffbe7;
+    border-radius: 10px;
+    padding: 16px 0;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.08);
+  }
+  
+  .user-greeting {
+    font-size: 1.1rem;
+    color: #b08968;
+  }
+  
+  .home-list-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 18px;
+  }
+  
+  button.home-button i {
+    margin-right: 7px;
+  }
+  
+  @media (max-width: 600px) {
+    .home-card {
+      padding: 18px 6px 18px 6px;
+      max-width: 98vw;
+    }
+    .home-title {
+      font-size: 1.3rem;
+    }
+    .home-list-group, .home-button-group {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+  
+  /* 게시판 바로가기 - 파란색 */
+  button.home-button.home-button-posts {
+    background: linear-gradient(135deg, #2196f3, #1565c0);
+  }
+  button.home-button.home-button-posts:hover {
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+  }
+  
+  /* 로그아웃 - 빨간색 */
+  button.home-button.home-button-logout {
+    background: linear-gradient(135deg, #dc3545, #a71d2a);
+  }
+  button.home-button.home-button-logout:hover {
+    background: linear-gradient(135deg, #a71d2a, #721c24);
+  }
+  
+  /* 적 목록 - 보라색 */
+  button.home-button.home-button-enemy {
+    background: linear-gradient(135deg, #8e24aa, #5e35b1);
+  }
+  button.home-button.home-button-enemy:hover {
+    background: linear-gradient(135deg, #5e35b1, #4527a0);
+  }
+  
+  /* 스킬 목록 - 초록색 */
+  button.home-button.home-button-skill {
+    background: linear-gradient(135deg, #43a047, #388e3c);
+  }
+  button.home-button.home-button-skill:hover {
+    background: linear-gradient(135deg, #388e3c, #1b5e20);
+  }
+  
+  /* 속성 목록 - 주황색 */
+  button.home-button.home-button-property {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+  }
+  button.home-button.home-button-property:hover {
+    background: linear-gradient(135deg, #f57c00, #e65100);
+  }
+  
+  /* 캐릭터 목록 - 분홍색 */
+  button.home-button.home-button-character {
+    background: linear-gradient(135deg, #ec407a, #ad1457);
+  }
+  button.home-button.home-button-character:hover {
+    background: linear-gradient(135deg, #ad1457, #880e4f);
   }
   
