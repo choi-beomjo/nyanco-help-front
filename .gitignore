@@ -224,3 +224,8 @@ pyrightconfig.json
 nyanco-help-front
 
 *.db
+
+jsconfig.json
+package-lock.json
+package.json
+vue.config.js
