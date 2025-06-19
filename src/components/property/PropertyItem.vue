@@ -1,18 +1,22 @@
 <template>
-    <li>
-      <strong>ID:</strong> {{ property.id }},
-      <strong>Property Name:</strong> {{ property.name }}
-      <button @click="$emit('edit', property.id)">Edit</button>
-    </li>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      property: {
-        type: Object,
-        required: true,
-      },
+  <div class="character-card property-card">
+    <div class="character-card-info">
+      <h2>{{ property.name }}</h2>
+      <div class="property-id">ID: {{ property.id }}</div>
+    </div>
+    <div class="character-card-actions">
+      <button class="edit-btn" @click="$emit('edit', property.id)"><i class="fas fa-edit"></i> 수정</button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    property: {
+      type: Object,
+      required: true,
     },
-  };
-  </script>
+  },
+};
+</script>
