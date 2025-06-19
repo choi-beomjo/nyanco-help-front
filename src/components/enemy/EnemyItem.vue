@@ -1,41 +1,96 @@
 <template>
-  <li class="enemy-item">
-    <div class="enemy-info">
-      <strong>ID</strong> <span>{{ enemy.id }}</span>
-      <strong>Name</strong> <span>{{ enemy.name }}</span>
-      <strong>ATK</strong> <span>{{ enemy.atk }}</span>
-      <strong>HP</strong> <span>{{ enemy.hp }}</span>
-      <strong>Range</strong> <span>{{ enemy.range }}</span>
-      <strong>Skills</strong> 
-      <div class="skill-list">
-        <span v-for="skill in enemy.skills" :key="skill.id" class="skill-tag">
-          <span v-html="getSkillIcon(skill.name)"></span> 
-          {{ skill.name }}
-        </span>
-      </div>
-      <strong>Properties</strong>
-      <div class="property-list">
-        <span
-    v-for="property in enemy.properties"
-    :key="property.id"
-    :style="{ backgroundColor: getPropertyColor(property.name), color: getTextColor(property.name) }"
-    class="property-tag"
-  >
-          {{ property.name }}
-        </span>
-      </div>
+  <div class="character-card enemy-card">
+    <div class="character-card-top">
+      <span class="cat-emoji">😼</span>
     </div>
-    <div class="enemy-actions">
-      <button @click="$emit('edit', enemy.id)">Edit</button>
-      <button @click="$emit('recommend', enemy)">Recommend</button>
+    <div class="character-card-info">
+      <h2>{{ enemy.name }}</h2>
     </div>
-  </li>
+    <div class="character-card-actions">
+      <button class="info-btn" @click="toggleDetail">
+        <i :class="showDetail ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
+        정보 보기
+      </button>
+      <button class="edit-btn" @click="$emit('edit', enemy.id)"><i class="fas fa-edit"></i> 수정</button>
+      <button class="delete-btn" @click="$emit('recommend', enemy)"><i class="fas fa-magic"></i> 추천</button>
+    </div>
+    <transition name="fade">
+      <div v-if="showDetail" class="character-detail">
+        <table class="character-stats-table">
+          <tr>
+            <th colspan="4">공격 관련</th>
+          </tr>
+          <tr>
+            <td><b>ATK1</b></td><td>{{ enemy.atk1 }}</td>
+            <td><b>ATK2</b></td><td>{{ enemy.atk2 }}</td>
+          </tr>
+          <tr>
+            <td><b>ATK3</b></td><td>{{ enemy.atk3 }}</td>
+            <td><b>Back ATK</b></td><td>{{ enemy.back_atk }}</td>
+          </tr>
+          <tr>
+            <td><b>Pre ATK1</b></td><td>{{ enemy.pre_atk1 }}</td>
+            <td><b>Pre ATK2</b></td><td>{{ enemy.pre_atk2 }}</td>
+          </tr>
+          <tr>
+            <td><b>Pre ATK3</b></td><td>{{ enemy.pre_atk3 }}</td>
+            <td><b>ATK Type</b></td><td>{{ enemy.atk_type }}</td>
+          </tr>
+          <tr>
+            <td><b>ATK Freq</b></td><td>{{ enemy.atk_freq }}</td>
+            <td></td><td></td>
+          </tr>
+
+          <tr><th colspan="4">체력/방어</th></tr>
+          <tr>
+            <td><b>HP</b></td><td>{{ enemy.hp }}</td>
+            <td><b>KB</b></td><td>{{ enemy.kb }}</td>
+          </tr>
+
+          <tr><th colspan="4">이동/생산</th></tr>
+          <tr>
+            <td><b>Speed</b></td><td>{{ enemy.speed }}</td>
+            <td><b>TBA</b></td><td>{{ enemy.tba }}</td>
+          </tr>
+          <tr>
+            <td><b>Money</b></td><td>{{ enemy.money }}</td>
+            <td><b>Range</b></td><td>{{ enemy.range }}</td>
+          </tr>
+          <tr>
+            <td><b>Long Distance1</b></td><td>{{ enemy.long_distance1 }}</td>
+            <td><b>Long Distance2</b></td><td>{{ enemy.long_distance2 }}</td>
+          </tr>
+
+          <tr><th colspan="4">기타</th></tr>
+          <tr>
+            <td><b>Trait</b></td><td>{{ enemy.trait }}</td>
+            <td></td><td></td>
+          </tr>
+        </table>
+        <div class="character-detail-row">
+          <b>Skills</b>
+          <span v-for="skill in enemy.skills" :key="skill.id" class="skill-tag">
+            <span v-html="getSkillIcon(skill.name)"></span>
+            {{ skill.name }}
+          </span>
+        </div>
+        <div class="character-detail-row">
+          <b>Properties</b>
+          <span v-for="property in enemy.properties" :key="property.id" class="property-tag"
+            :style="{ backgroundColor: getPropertyColor(property.name), color: getTextColor(property.name) }">
+            {{ property.name }}
+          </span>
+        </div>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
-import "@/assets/css/EnemyItem.css";
-import "@fortawesome/fontawesome-free/css/all.css"; // Font Awesome Import
+import "@/assets/css/CharacterItem.css";
+import "@fortawesome/fontawesome-free/css/all.css";
 import { useIconAndColor } from "@/composables/useIconAndColor";
+import { ref } from 'vue';
 export default {
   props: {
     enemy: {
@@ -45,14 +100,15 @@ export default {
   },
   setup() {
     const { getSkillIcon, getPropertyColor, getTextColor } = useIconAndColor();
-
+    const showDetail = ref(false);
+    const toggleDetail = () => { showDetail.value = !showDetail.value; };
     return {
       getSkillIcon,
       getPropertyColor,
       getTextColor,
+      showDetail,
+      toggleDetail,
     };
-  },
-  methods: {
   },
 };
 </script>
