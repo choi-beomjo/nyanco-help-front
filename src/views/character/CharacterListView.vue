@@ -99,7 +99,11 @@ export default {
       try {
         this.enemies = await fetchList("/api/character/list");
       } catch (error) {
-        console.error("Error fetching enemies:", error);
+        console.error("Error fetching characters:", error);
+        // 사용자에게 에러 메시지 표시
+        alert(`캐릭터 목록을 불러오는데 실패했습니다: ${error.message}`);
+        // 빈 배열로 초기화하여 UI가 깨지지 않도록 함
+        this.enemies = [];
       }
     },
     goSearch() {
