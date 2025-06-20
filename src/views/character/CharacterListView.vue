@@ -20,9 +20,9 @@
       </div>
     </div>
 
-    <div v-if="enemies.length" class="character-card-grid">
+    <div v-if="characters.length" class="character-card-grid">
       <CharacterItem
-        v-for="character in displayedCharacters"
+        v-for="character in characters"
         :key="character.id"
         :character="character"
         @edit="goToEdit"
@@ -43,6 +43,16 @@
       <button class="character-btn page-btn" :disabled="currentPage === totalPages" @click="nextPage">
         다음
       </button>
+      <div class="page-jump-container">
+        <input
+          type="number"
+          class="page-jump-input"
+          v-model.number="jumpToPage"
+          @keyup.enter="goToPage"
+          placeholder="페이지"
+        />
+        <button class="character-btn page-jump-btn" @click="goToPage">이동</button>
+      </div>
     </div>
   </div>
 </template>
@@ -62,32 +72,27 @@ export default {
   },
   data() {
     return {
-      enemies: [], // 적 데이터 저장
+      characters: [],
       pageSize: 10,
       currentPage: 1,
+      totalPages: 1,
+      jumpToPage: null,
     };
-  },
-  computed: {
-    totalPages() {
-      return Math.ceil(this.enemies.length / this.pageSize) || 1;
-    },
-    displayedCharacters() {
-      const start = (this.currentPage - 1) * this.pageSize;
-      const end = start + this.pageSize;
-      return this.enemies.slice(start, end);
-    },
   },
   watch: {
     pageSize() {
       this.currentPage = 1;
+      this.fetchCharacters();
     },
+    currentPage() {
+      this.fetchCharacters();
+    }
   },
   created() {
-    this.fetchCharacters(); // 페이지 생성 시 API 호출
+    this.fetchCharacters();
   },
   setup() {
-    const { goBack, goToEdit, goAdd } = useRouterActions("character"); // "skill" 대신 "enemy" 등 다른 값 사용 가능.
-
+    const { goBack, goToEdit, goAdd } = useRouterActions("character");
     return {
       goBack,
       goToEdit,
@@ -97,14 +102,29 @@ export default {
   methods: {
     async fetchCharacters() {
       try {
-        this.enemies = await fetchList("/api/character/list");
+        const params = { page: this.currentPage, page_size: this.pageSize };
+        const response = await fetchList("/api/character/list", params);
+        
+        // 변경된 API 응답 구조 반영
+        this.characters = response.data;
+        this.totalPages = Math.ceil(response.total / response.page_size) || 1;
+        // this.currentPage = response.page; // 페이지 이동 시 watch에서 처리되므로 중복
+
       } catch (error) {
         console.error("Error fetching characters:", error);
-        // 사용자에게 에러 메시지 표시
         alert(`캐릭터 목록을 불러오는데 실패했습니다: ${error.message}`);
-        // 빈 배열로 초기화하여 UI가 깨지지 않도록 함
-        this.enemies = [];
+        this.characters = [];
       }
+    },
+    goToPage() {
+      if (
+        this.jumpToPage &&
+        this.jumpToPage > 0 &&
+        this.jumpToPage <= this.totalPages
+      ) {
+        this.currentPage = this.jumpToPage;
+      }
+      this.jumpToPage = null; // Reset input
     },
     goSearch() {
       this.$router.push("/character/search");
