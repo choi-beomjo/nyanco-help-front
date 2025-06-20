@@ -84,3 +84,44 @@
   margin-bottom: 10px;
   display: block;
 }
+
+.enemy-list-options {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.enemy-page-size {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.enemy-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+.enemy-btn.page-btn {
+  background: linear-gradient(135deg, #ffd180 60%, #ffab40 100%);
+  color: #c51162;
+  font-size: 1rem;
+  min-width: 70px;
+  padding: 7px 0;
+}
+.enemy-btn.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.enemy-page-info {
+  font-size: 1.1rem;
+  color: #ff6d00;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
