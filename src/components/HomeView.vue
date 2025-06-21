@@ -20,24 +20,6 @@
             <i class="fas fa-sign-out-alt"></i> 로그아웃
           </button>
         </div>
-
-        <div class="home-list-group">
-          <button class="home-button home-button-enemy" @click="goToEnemyList">
-            <i class="fas fa-skull-crossbones"></i> 적 목록
-          </button>
-          <button class="home-button home-button-character" @click="goToCharacterList">
-            <i class="fas fa-cat"></i> 캐릭터 목록
-          </button>
-          <button class="home-button home-button-skill" @click="goToSkillList">
-            <i class="fas fa-magic"></i> 스킬 목록
-          </button>
-          <button class="home-button home-button-property" @click="goToPropertyList">
-            <i class="fas fa-gem"></i> 속성 목록
-          </button>   
-          <button class="home-button home-button-stage" @click="goToStageList">
-            <i class="fas fa-map-signs"></i> 스테이지 목록
-          </button>
-        </div>
       </div>
     </div>
   </div>
@@ -78,21 +60,6 @@ export default {
       this.isLoggedIn = false;
       this.username = "";
       this.$router.push("/login");
-    },
-    goToEnemyList() {
-      this.$router.push("/enemy-list");
-    },
-    goToSkillList() {
-      this.$router.push("/skill-list");
-    },
-    goToPropertyList() {
-      this.$router.push("/property-list");
-    },
-    goToCharacterList() {
-      this.$router.push("/character-list");
-    },
-    goToStageList() {
-      this.$router.push("/stage-list");
     },
   },
 };
