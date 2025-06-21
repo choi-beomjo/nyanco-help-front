@@ -182,6 +182,7 @@
     font-size: 0.97rem;
     color: #444;
     box-shadow: 0 2px 8px rgba(124,77,255,0.06);
+    overflow-x: auto;
 }
 
 .character-detail-row {
@@ -238,3 +239,52 @@
     border: 1px solid #fffde7;
     text-shadow: 0 1px 2px rgba(0,0,0,0.08);
 }
+
+/* 캐릭터 상세 정보 표 귀여운 스타일 */
+.character-stats-table {
+  width: 98%;
+  margin: 0 auto 12px auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(255, 182, 193, 0.13);
+  background: #fff8fc;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.95rem;
+  overflow: hidden;
+}
+.character-stats-table th {
+  background: #ffe7fa;
+  color: #d81b60;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 0 8px 0;
+  border-bottom: 2px solid #ffd6e0;
+}
+.character-stats-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #ffe7fa;
+  color: #7c4dff;
+  background: #fffde7;
+  transition: background 0.2s;
+}
+.character-stats-table tr:last-child td {
+  border-bottom: none;
+}
+.character-stats-table td b {
+  color: #ff80ab;
+  font-weight: 700;
+}
+.character-stats-table tr:hover td {
+  background: #ffe7fa;
+}
+
+.character-stats-table td,
+.character-stats-table th {
+  background: transparent !important;
+}
+
+.form-bg-1 { background: #fff !important; }
+.form-bg-2 { background: #fffde7 !important; }
+.form-bg-3 { background: #ffe0b2 !important; }
+.form-bg-4 { background: #ffb3b3 !important; }

@@ -149,4 +149,48 @@
   color: #7c4dff;
   font-weight: bold;
   letter-spacing: 1px;
+}
+
+.page-jump-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px; /* 이전/다음 버튼과 간격 */
+}
+
+.page-jump-input {
+  width: 70px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.page-jump-input:focus {
+  border-color: #7c4dff;
+  box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.2);
+  outline: none;
+}
+
+/* Remove arrows from number input */
+.page-jump-input::-webkit-outer-spin-button,
+.page-jump-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.page-jump-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.character-btn.page-jump-btn {
+  padding: 9px 18px;
+  min-width: auto;
+  background: linear-gradient(135deg, #e1f5fe 60%, #b2ebf2 100%);
+  color: #039be5;
+}
+.character-btn.page-jump-btn:hover {
+  background: linear-gradient(135deg, #b2ebf2 60%, #e1f5fe 100%);
+  color: #01579b;
 } 
