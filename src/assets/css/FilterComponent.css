@@ -1,68 +1,141 @@
 .filter-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  /* 📌 체크박스 그룹을 그리드 형태로 배치 */
-  .filter-group {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-  
-  /* 체크박스 항목 디자인 개선 */
-  .filter-group label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: white;
-    padding: 8px;
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .filter-group label:hover {
-    background: #f0f0f0;
-  }
-  
-  /* 체크박스 크기 조정 */
-  .filter-group input[type="checkbox"] {
-    transform: scale(1.2);
-    cursor: pointer;
-  }
-  
-  /* 필터 버튼 스타일 */
-  button {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  button:hover {
-    background: #0056b3;
-  }
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+  margin-bottom: 32px;
+}
 
+.filter-section {
+  margin-bottom: 28px;
+}
+
+.filter-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.filter-title i {
+  color: #7c4dff;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #dee2e6;
+  position: relative;
+}
+
+.checkbox-label:hover {
+  border-color: #7c4dff;
+  background-color: #f1f3ff;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #adb5bd;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.checkbox-label .label-text {
+  font-weight: 500;
+  color: #495057;
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom {
+  background-color: #7c4dff;
+  border-color: #7c4dff;
+}
+.checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom::after {
+  content: '✔';
+  color: white;
+  font-size: 14px;
+}
+
+.skills-group .checkbox-custom i {
+  font-size: 12px;
+  color: #495057;
+}
+.skills-group .checkbox-label:hover .checkbox-custom i,
+.skills-group .checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom i {
+  color: #7c4dff;
+}
+.skills-group .checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom i {
+  color: white;
+}
+
+
+.properties-group .checkbox-custom {
+  background-color: var(--property-bg, #e9ecef);
+  border-color: var(--property-bg, #e9ecef);
+}
+.properties-group .checkbox-label {
+  background-color: var(--property-bg, #e9ecef);
+  border-color: transparent;
+}
+.properties-group .label-text {
+  color: var(--property-text, #343a40);
+  font-weight: 600;
+}
+.properties-group .checkbox-label input[type="checkbox"]:checked {
+  outline: 2px solid #7c4dff;
+  outline-offset: 2px;
+}
+.properties-group .checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom {
+  transform: scale(1.1);
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.filter-btn {
+  background: linear-gradient(135deg, #7c4dff, #512da8);
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(124, 77, 255, 0.4);
+}
+
+.filter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 77, 255, 0.5);
+}
 
 /* ✅ 속성(Property)의 색상이 적용된 체크박스 스타일 */
 .property-label {
