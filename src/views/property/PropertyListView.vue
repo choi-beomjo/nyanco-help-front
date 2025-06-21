@@ -6,7 +6,9 @@
         <button class="property-btn add" @click="goAdd">
           <i class="fas fa-plus"></i> 속성 추가
         </button>
-        <BackButton />
+        <button class="property-btn back" @click="goBack">
+          <i class="fas fa-arrow-left"></i> 뒤로가기
+        </button>
       </div>
     </div>
     <div v-if="properties.length" class="character-card-grid">
@@ -25,15 +27,16 @@
 </template>
 
 <script>
+import "@/assets/css/PropertyList.css";
 import PropertyItem from "@/components/property/PropertyItem.vue";
-import BackButton from "@/components/common/BackButton.vue";
+// import BackButton from "@/components/common/BackButton.vue"; // Not used anymore
 import axios from "@/services/axios.js";
 import { useRouterActions } from "@/composables/useRouterActions";
 
 export default {
   components:{
     PropertyItem,
-    BackButton,
+    // BackButton, // Not used anymore
   },
   data() {
     return {
