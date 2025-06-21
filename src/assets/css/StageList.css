@@ -184,4 +184,71 @@
 .stage-enemies-table td {
   background-color: #e8f5e9;
   color: #2e7d32;
+}
+
+/* Difficulty Background Colors */
+.stage-card.difficulty-bg-1 {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+.stage-card.difficulty-bg-2 {
+  background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+}
+.stage-card.difficulty-bg-3 {
+  background: linear-gradient(135deg, #a5d6a7, #81c784);
+}
+.stage-card.difficulty-bg-4 {
+  background: linear-gradient(135deg, #81c784, #66bb6a);
+}
+.stage-card.difficulty-bg-5 {
+  background: linear-gradient(135deg, #66bb6a, #4caf50);
+}
+.stage-card.difficulty-bg-6 {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+}
+.stage-card.difficulty-bg-7 {
+  background: linear-gradient(135deg, #388e3c, #2e7d32);
+}
+.stage-card.difficulty-bg-8 {
+  background: linear-gradient(135deg, #2e7d32, #256029);
+}
+.stage-card.difficulty-bg-9 {
+  background: linear-gradient(135deg, #256029, #1b4318);
+}
+.stage-card.difficulty-bg-10 {
+  background: linear-gradient(135deg, #1b4318, #0a1905);
+}
+.stage-card.difficulty-bg-11 {
+  background: linear-gradient(135deg, #0a1905, #000000);
+}
+/* For higher difficulties, we can make text white for readability */
+.stage-card.difficulty-bg-4 .stage-name,
+.stage-card.difficulty-bg-4 .stage-basic-info,
+.stage-card.difficulty-bg-5 .stage-name,
+.stage-card.difficulty-bg-5 .stage-basic-info,
+.stage-card.difficulty-bg-6 .stage-name,
+.stage-card.difficulty-bg-6 .stage-basic-info,
+.stage-card.difficulty-bg-7 .stage-name,
+.stage-card.difficulty-bg-7 .stage-basic-info,
+.stage-card.difficulty-bg-8 .stage-name,
+.stage-card.difficulty-bg-8 .stage-basic-info,
+.stage-card.difficulty-bg-9 .stage-name,
+.stage-card.difficulty-bg-9 .stage-basic-info,
+.stage-card.difficulty-bg-10 .stage-name,
+.stage-card.difficulty-bg-10 .stage-basic-info,
+.stage-card.difficulty-bg-11 .stage-name,
+.stage-card.difficulty-bg-11 .stage-basic-info {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.stage-card.difficulty-bg-4 .stage-icon,
+.stage-card.difficulty-bg-5 .stage-icon {
+  color: #fff;
 } 
+.stage-card.difficulty-bg-6 .stage-icon,
+.stage-card.difficulty-bg-7 .stage-icon,
+.stage-card.difficulty-bg-8 .stage-icon,
+.stage-card.difficulty-bg-9 .stage-icon,
+.stage-card.difficulty-bg-10 .stage-icon,
+.stage-card.difficulty-bg-11 .stage-icon {
+  color: #fff;
+}

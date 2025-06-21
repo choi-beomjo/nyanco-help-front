@@ -1,5 +1,5 @@
 <template>
-  <div class="character-card stage-card">
+  <div class="character-card stage-card" :class="difficultyClass">
     <div class="character-card-info">
       <i class="fas fa-map-signs stage-icon"></i>
       <h2 class="stage-name">{{ stage.name }}</h2>
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 export default {
   props: {
     stage: {
@@ -57,14 +57,26 @@ export default {
       required: true,
     },
   },
-  setup() {
+  setup(props) {
     const showDetail = ref(false);
     const toggleDetail = () => {
       showDetail.value = !showDetail.value;
     };
+
+    const difficultyClass = computed(() => {
+      if (props.stage.difficulty) {
+        const level = parseInt(String(props.stage.difficulty), 10);
+        if (!isNaN(level)) {
+          return `difficulty-bg-${level}`;
+        }
+      }
+      return 'difficulty-bg-1';
+    });
+
     return {
       showDetail,
       toggleDetail,
+      difficultyClass,
     };
   },
 };
