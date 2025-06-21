@@ -6,6 +6,7 @@ import enemyRoutes from './enemyRoutes';
 import propertyRoutes from './propertyRoutes';
 import skillRoutes from './skillRoutes';
 import characterRoutes from './characterRoutes';
+import stageRoutes from './stageRoutes';
 
 const routes = [
   { path: '/', name: 'HomeView', component: HomeView },
@@ -19,6 +20,7 @@ const routes = [
   ...propertyRoutes,
   ...skillRoutes,
   ...characterRoutes,
+  ...stageRoutes,
 ];
 
 const router = createRouter({

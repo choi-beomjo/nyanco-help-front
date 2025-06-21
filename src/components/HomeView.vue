@@ -34,6 +34,9 @@
           <button class="home-button home-button-property" @click="goToPropertyList">
             <i class="fas fa-gem"></i> 속성 목록
           </button>   
+          <button class="home-button home-button-stage" @click="goToStageList">
+            <i class="fas fa-map-signs"></i> 스테이지 목록
+          </button>
         </div>
       </div>
     </div>
@@ -87,6 +90,9 @@ export default {
     },
     goToCharacterList() {
       this.$router.push("/character-list");
+    },
+    goToStageList() {
+      this.$router.push("/stage-list");
     },
   },
 };
