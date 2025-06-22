@@ -48,4 +48,5 @@
 .nav-link.enemy-link.router-link-active { color: #c51162; border-bottom-color: #c51162; }
 .nav-link.skill-link.router-link-active { color: #0277bd; border-bottom-color: #0277bd; }
 .nav-link.property-link.router-link-active { color: #8e24aa; border-bottom-color: #8e24aa; }
-.nav-link.stage-link.router-link-active { color: #43a047; border-bottom-color: #43a047; } 
+.nav-link.stage-link.router-link-active { color: #43a047; border-bottom-color: #43a047; }
+.nav-link.recommendation-link.router-link-active { color: #2979ff; border-bottom-color: #2979ff; } 

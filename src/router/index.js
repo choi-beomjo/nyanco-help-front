@@ -7,6 +7,7 @@ import propertyRoutes from './propertyRoutes';
 import skillRoutes from './skillRoutes';
 import characterRoutes from './characterRoutes';
 import stageRoutes from './stageRoutes';
+import RecommendationView from '@/views/recommendation/RecommendationView.vue';
 
 const routes = [
   { path: '/', name: 'HomeView', component: HomeView },
@@ -15,6 +16,18 @@ const routes = [
     path: "/login",
     name: "Login",
     component: LoginForm,
+  },
+  {
+    path: '/recommendation',
+    name: 'Recommendation',
+    component: RecommendationView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/team-composition',
+    name: 'TeamComposition',
+    component: () => import('@/views/recommendation/TeamCompositionView.vue'),
+    meta: { requiresAuth: true }
   },
   ...enemyRoutes,
   ...propertyRoutes,

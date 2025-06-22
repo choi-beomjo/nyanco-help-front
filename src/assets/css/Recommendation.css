@@ -1,0 +1,188 @@
+/* src/assets/css/Recommendation.css */
+.recommendation-container {
+  background: #f8fafc;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+  padding: 40px 28px 36px 28px;
+  max-width: 900px;
+  margin: 48px auto;
+  min-height: 70vh;
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.recommendation-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #22223b;
+  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.recommendation-title i {
+  color: #2979ff; /* Blue theme for recommendation */
+}
+.recommendation-header .recommendation-back-btn {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.form-description {
+  background-color: #e3f2fd;
+  color: #1e88e5;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.behavior-form {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+.form-group label .required {
+  color: #e53935;
+  margin-left: 4px;
+}
+
+.form-group input[type="number"],
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2979ff;
+  box-shadow: 0 0 0 3px rgba(41, 121, 255, 0.2);
+}
+
+.selection-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.selection-display {
+  flex-grow: 1;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.selection-display .placeholder {
+  color: #888;
+}
+
+.tags-display {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.select-btn {
+  background: #f0f4f8;
+  color: #334e68;
+  border: 1px solid #d9e2ec;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.select-btn:hover {
+  background: #e4e9f0;
+  border-color: #c0cddb;
+}
+
+.search-input {
+  margin-bottom: 8px;
+  padding: 10px 12px !important;
+}
+
+.form-group .description {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: -4px;
+  margin-bottom: 12px;
+}
+
+.team-composition-group .checkbox-group {
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #fcfdff;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+.submit-btn {
+  background: linear-gradient(135deg, #42a5f5, #1e88e5);
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.submit-btn:disabled {
+  background: #90caf9;
+  cursor: not-allowed;
+} 
