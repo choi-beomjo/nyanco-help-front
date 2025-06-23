@@ -1,5 +1,5 @@
 <template>
-  <div class="character-card enemy-card">
+  <div class="character-card enemy-card" :class="propertyClass">
     <div class="character-card-top">
       <span class="cat-emoji">😼</span>
     </div>
@@ -90,7 +90,8 @@
 import "@/assets/css/CharacterItem.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { useIconAndColor } from "@/composables/useIconAndColor";
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+
 export default {
   props: {
     enemy: {
@@ -98,17 +99,27 @@ export default {
       required: true,
     },
   },
-  setup() {
+  setup(props) {
     const { getSkillIcon, getPropertyColor, getTextColor } = useIconAndColor();
     const showDetail = ref(false);
     const toggleDetail = () => { showDetail.value = !showDetail.value; };
+    
+    const propertyClass = computed(() => {
+      if (props.enemy.properties && props.enemy.properties.length > 0) {
+        const propertyName = props.enemy.properties[0].name.toLowerCase().replace(/\s+/g, '-');
+        return `property-bg-${propertyName}`;
+      }
+      return 'property-bg-default';
+    });
+    
     return {
       getSkillIcon,
       getPropertyColor,
       getTextColor,
       showDetail,
       toggleDetail,
+      propertyClass,
     };
-  },
+  }
 };
 </script>
