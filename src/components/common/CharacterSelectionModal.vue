@@ -7,8 +7,15 @@
           <button @click="$emit('close')" class="close-btn">&times;</button>
         </div>
         <div class="modal-body">
+          <div class="modal-controls">
+            <input type="text" v-model="searchQuery" @keyup.enter="startSearch" placeholder="캐릭터 이름으로 검색..." class="search-input">
+            <button @click="startSearch" class="search-btn">검색</button>
+          </div>
           <div v-if="loading" class="loading-indicator">
             <i class="fas fa-spinner fa-spin"></i>
+          </div>
+          <div v-else-if="!characters.length" class="no-data">
+            표시할 캐릭터가 없습니다.
           </div>
           <div v-else class="item-grid character-grid">
             <div 
@@ -55,12 +62,17 @@ export default {
       pageSize: 12,
       totalPages: 1,
       localSelection: [],
+      searchQuery: '',
+      isSearching: false,
     };
   },
   watch: {
     show(newVal) {
       if (newVal) {
         this.localSelection = [...this.initialSelection];
+        this.searchQuery = '';
+        this.isSearching = false;
+        this.currentPage = 1;
         this.fetchCharacters();
       }
     }
@@ -69,18 +81,32 @@ export default {
     async fetchCharacters() {
       this.loading = true;
       try {
+        let apiPath = '/api/character/list';
         const params = { 
           page: this.currentPage, 
           page_size: this.pageSize,
         };
-        const response = await fetchList('/api/character/list', params);
+
+        if (this.isSearching && this.searchQuery) {
+          apiPath = '/api/character/search/name';
+          params.name = this.searchQuery;
+        }
+
+        const response = await fetchList(apiPath, params);
         this.characters = response.data;
         this.totalPages = Math.ceil(response.total / this.pageSize) || 1;
       } catch (error) {
         console.error('Error fetching characters in modal:', error);
+        this.characters = [];
+        this.totalPages = 1;
       } finally {
         this.loading = false;
       }
+    },
+    startSearch() {
+      this.currentPage = 1;
+      this.isSearching = this.searchQuery.trim() !== '';
+      this.fetchCharacters();
     },
     isSelected(charId) {
         return this.localSelection.some(c => c.id === charId);

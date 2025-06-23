@@ -32,7 +32,12 @@ export default {
         window.location.reload();
       } catch (error) {
         console.error('Error submitting form:', error);
-        alert(`등록에 실패했습니다: ${error.response?.data?.message || error.message}`);
+        if (error.response) {
+          console.error('Server Response:', error.response.data);
+          alert(`등록에 실패했습니다. 개발자 콘솔(F12)에서 상세 오류를 확인해주세요. (Status: ${error.response.status})`);
+        } else {
+          alert(`등록에 실패했습니다: ${error.message}`);
+        }
       }
     }
   }

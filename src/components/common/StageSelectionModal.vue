@@ -7,8 +7,15 @@
           <button @click="$emit('close')" class="close-btn">&times;</button>
         </div>
         <div class="modal-body">
+          <div class="modal-controls">
+            <input type="text" v-model="searchQuery" @keyup.enter="startSearch" placeholder="스테이지 이름으로 검색..." class="search-input">
+            <button @click="startSearch" class="search-btn">검색</button>
+          </div>
           <div v-if="loading" class="loading-indicator">
             <i class="fas fa-spinner fa-spin"></i>
+          </div>
+          <div v-else-if="!stages.length" class="no-data">
+            표시할 스테이지가 없습니다.
           </div>
           <div v-else class="item-grid">
             <div v-for="stage in stages" :key="stage.id" class="item-card" @click="selectStage(stage)">
@@ -44,11 +51,16 @@ export default {
       pageSize: 12,
       totalPages: 1,
       total: 0,
+      searchQuery: '',
+      isSearching: false,
     };
   },
   watch: {
     show(newVal) {
       if (newVal) {
+        this.searchQuery = '';
+        this.isSearching = false;
+        this.currentPage = 1;
         this.fetchStages();
       }
     }
@@ -57,19 +69,33 @@ export default {
     async fetchStages() {
       this.loading = true;
       try {
+        let apiPath = '/api/stage/list';
         const params = { 
           page: this.currentPage, 
           page_size: this.pageSize,
         };
-        const response = await fetchList('/api/stage/list', params);
+
+        if (this.isSearching && this.searchQuery) {
+          apiPath = '/api/stage/search/name';
+          params.name = this.searchQuery;
+        }
+
+        const response = await fetchList(apiPath, params);
         this.stages = response.data;
         this.totalPages = Math.ceil(response.total / this.pageSize) || 1;
         this.total = response.total;
       } catch (error) {
         console.error('Error fetching stages in modal:', error);
+        this.stages = [];
+        this.totalPages = 1;
       } finally {
         this.loading = false;
       }
+    },
+    startSearch() {
+      this.currentPage = 1;
+      this.isSearching = this.searchQuery.trim() !== '';
+      this.fetchStages();
     },
     selectStage(stage) {
       this.$emit('select', stage);
